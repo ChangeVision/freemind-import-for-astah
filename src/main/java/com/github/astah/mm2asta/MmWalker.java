@@ -8,9 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
@@ -34,6 +31,9 @@ import com.github.astah.mm2asta.model.Map;
 import com.github.astah.mm2asta.model.Node;
 import com.github.astah.mm2asta.model.Richcontent;
 import com.github.astah.mm2asta.usericon.UserIcon;
+import com.github.astah.mm2asta.util.JAXBUtils;
+
+import jakarta.xml.bind.JAXBException;
 
 public class MmWalker {
 	private static final Logger logger = LoggerFactory.getLogger(MmWalker.class);
@@ -71,12 +71,8 @@ public class MmWalker {
 		SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		URL schemaURL = Map.class.getClassLoader().getResource("schema/freemind.xsd");
 		Schema schema = factory.newSchema(schemaURL);
-		
-		JAXBContext context = JAXBContext.newInstance(Map.class);
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		unmarshaller.setSchema(schema);
-		Map map = (Map) unmarshaller.unmarshal(new BufferedInputStream(new FileInputStream(filePath)));
-		return map;
+        return JAXBUtils.unmarshal(schema,
+                new BufferedInputStream(new FileInputStream(filePath)), Map.class);
 	}
 
 	private void scan(INodePresentation parent, Node node) throws Throwable {

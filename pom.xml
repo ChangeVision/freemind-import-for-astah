@@ -4,14 +4,14 @@
 		<bundle.symbolicName>com.github.astah.mm2asta</bundle.symbolicName>
 		<bundle.namespace>com.github.astah.mm2asta</bundle.namespace>
 		<plugin.install>true</plugin.install>
-		<astah.version>6.5.1</astah.version>
+        <astah.version>10.0</astah.version>
 		<astah.edition>think,uml,pro</astah.edition>
 	</properties>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.astah</groupId>
-	<version>0.2.3</version>
+    <version>0.3.0</version>
 	<artifactId>mm2asta</artifactId>
-	<packaging>jar</packaging>
+    <packaging>bundle</packaging>
 	<name>FreeMind Import for Astah</name>
 	<description>Import your existing FreeMind Maps to Astah, and take your Mind Maps to the next level!</description>
 	<pluginRepositories>
@@ -49,7 +49,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.1.2</version>
+                <version>3.5.0</version>
 				<reportSets>
 					<reportSet>
 						<reports>
@@ -66,7 +66,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.3</version>
+                <version>3.3.2</version>
 				<configuration>
 					<inputEncoding>UTF-8</inputEncoding>
 					<outputEncoding>UTF-8</outputEncoding>
@@ -76,7 +76,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.0</version>
+                <version>4.0.0-M13</version>
 				<configuration>
 					<locales>ja</locales>
 					<inputEncoding>UTF-8</inputEncoding>
@@ -87,7 +87,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.4.2</version>
+                <version>3.2.5</version>
 				<configuration>
 					<systemPropertyVariables>
 						<file.encoding>utf-8</file.encoding>
@@ -103,22 +103,22 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.4.2</version>
+                <version>3.2.5</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8</version>
+                <version>3.3.1</version>
 				<configuration>
-					<source>1.6</source>
+                    <source>1.8</source>
 					<encoding>UTF-8</encoding>
 					<docencoding>UTF-8</docencoding>
 					<charset>UTF-8</charset>
 					<show>protected</show>
 					<links>
-						<link>http://java.sun.com/javase/ja/6/docs/ja/api/</link>
-						<link>http://members.change-vision.com/javadoc/astah-api/6_5/api/ja/doc/javadoc/</link>
+                        <link>https://docs.oracle.com/javase/8/docs/api/</link>
+                        <link>https://members.change-vision.com/javadoc/astah-api/8_4_0/api/ja/doc/javadoc/</link>
 					</links>
 				</configuration>
 			</plugin>
@@ -142,7 +142,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.4</version>
+                <version>3.1.2</version>
 				<executions>
 					<execution>
 						<id>copy-dependencies</id>
@@ -160,17 +160,17 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+                <version>3.8.1</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.6</source>
-					<target>1.6</target>
+                    <source>21</source>
+                    <target>21</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
+                <version>3.3.1</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 				</configuration>
@@ -178,12 +178,12 @@
 			<plugin>
 				<groupId>com.change_vision.astah</groupId>
 				<artifactId>astah-maven-plugin</artifactId>
-				<version>0.9.3</version>
+				<version>1.1.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.3.6</version>
+                <version>5.1.9</version>
 				<extensions>true</extensions>
 				<executions>
 					<execution>
@@ -281,14 +281,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
+            <artifactId>osgi.core</artifactId>
+            <version>8.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<version>4.2.0</version>
+            <artifactId>osgi.cmpn</artifactId>
+            <version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -338,25 +338,50 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.0</version>
+            <version>1.5.12</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>1.0.0</version>
+            <version>1.5.12</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.6.4</version>
+            <version>2.0.16</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.4</version>
+            <version>2.0.16</version>
 		</dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.istack</groupId>
+            <artifactId>istack-commons-runtime</artifactId>
+            <version>4.2.0</version>
+        </dependency>
 	</dependencies>
 </project>

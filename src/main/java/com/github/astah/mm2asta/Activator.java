@@ -10,8 +10,6 @@ import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import javax.xml.bind.JAXB;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
@@ -23,6 +21,7 @@ import com.github.astah.mm2asta.updater.AutoUpdater;
 import com.github.astah.mm2asta.usericon.MMUserIconFile;
 import com.github.astah.mm2asta.usericon.MmUserIcon;
 import com.github.astah.mm2asta.util.ConfigurationUtils;
+import com.github.astah.mm2asta.util.JAXBUtils;
 
 public class Activator implements BundleActivator {
 	private static final Logger logger = LoggerFactory.getLogger(Activator.class);
@@ -76,7 +75,7 @@ public class Activator implements BundleActivator {
 				MmUserIcon.unmarshall(new FileInputStream(userIconXmlFile))	: new MmUserIcon();
 		if (!mmUserIcon.containsAll(mmUserIconForPlugin)) {
 			mmUserIcon.merge(mmUserIconForPlugin);
-			JAXB.marshal(mmUserIcon, new FileWriter(userIconXmlFile));
+            JAXBUtils.marshal(mmUserIcon, new FileWriter(userIconXmlFile));
 		}
 	}
 	
