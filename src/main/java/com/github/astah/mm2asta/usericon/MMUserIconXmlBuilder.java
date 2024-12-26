@@ -11,9 +11,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXB;
-
 import org.apache.commons.io.FileUtils;
+
+import com.github.astah.mm2asta.util.JAXBUtils;
+
+import jakarta.xml.bind.JAXB;
 
 public class MMUserIconXmlBuilder {
 	/**
@@ -69,7 +71,7 @@ public class MMUserIconXmlBuilder {
 		}
 		
         FileWriter xml = new FileWriter(userIconXmlFile);
-        JAXB.marshal(newMmUserIcon, xml);
+        JAXBUtils.marshal(newMmUserIcon, xml);
 	}
 
 	/**

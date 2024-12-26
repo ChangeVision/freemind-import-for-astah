@@ -8,7 +8,6 @@ import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
 import javax.swing.WindowConstants;
-import javax.xml.bind.JAXB;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
@@ -23,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.astah.mm2asta.updater.NotificationPopup.Position;
+import com.github.astah.mm2asta.util.JAXBUtils;
 
 public class AutoUpdater {
 	private static final Logger logger = LoggerFactory.getLogger(AutoUpdater.class);
@@ -41,7 +41,7 @@ public class AutoUpdater {
 				}
 				
 				InputStream is = response.getEntity().getContent();
-				Update updateXml = JAXB.unmarshal(is, Update.class);
+                Update updateXml = JAXBUtils.unmarshal(is, Update.class);
 				Plugin plugin = updateXml.getPlugin();
 				UpdateCheck updateCheck = plugin.getUpdatecCheck();
 				if (versionCompareTo(updateCheck.getVersion(), getCurrentVersion()) > 0) {
